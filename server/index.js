@@ -4,13 +4,12 @@ const chalk = require("chalk");
 const debug = require("debug")("robots:indexServer");
 const initializeMongoDBServer = require("../database/index");
 const errorHandler = require("./error");
+const robotsRoutes = require("./routes/robotsRoutes");
 
 const app = express();
 
-app.use(morgan("dev"));
-
 const initializeServer = (port) => {
-  const server = app.listen(() => {
+  const server = app.listen(port, () => {
     debug(
       chalk.yellow(
         `${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"} Escuchando en el puerto ${port} ${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"}`
@@ -29,7 +28,11 @@ const initializeServer = (port) => {
   });
 };
 
+app.use(morgan("dev"));
+
 app.use(express.json());
+
+app.use("/robots", robotsRoutes);
 
 app.use(errorHandler);
 
