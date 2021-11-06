@@ -11,7 +11,7 @@ const app = express();
 const initializeServer = (port) => {
   const server = app.listen(port, () => {
     debug(
-      chalk.yellow(
+      chalk.green(
         `${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"} Escuchando en el puerto ${port} ${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"}`
       )
     );
