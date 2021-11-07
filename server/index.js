@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const chalk = require("chalk");
 const debug = require("debug")("robots:indexServer");
+const cors = require("cors");
 const initializeMongoDBServer = require("../database/index");
 const errorHandler = require("./error");
 const robotsRoutes = require("./routes/robotsRoutes");
@@ -27,6 +28,8 @@ const initializeServer = (port) => {
     debug(chalk.bgRedBright.white(`Error inesperado: ${error.message}`));
   });
 };
+
+app.use(cors());
 
 app.use(morgan("dev"));
 

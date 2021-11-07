@@ -28,6 +28,7 @@ describe("Given a getRobots function,", () => {
       const res = {
         json: jest.fn(),
       };
+
       await getRobots(null, res);
 
       expect(Robot.find).toHaveBeenCalled();
