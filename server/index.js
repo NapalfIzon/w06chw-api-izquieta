@@ -7,6 +7,7 @@ const initializeMongoDBServer = require("../database/index");
 const errorHandler = require("./error");
 const robotsRoutes = require("./routes/robotsRoutes");
 const userRoutes = require("./routes/usersRoutes");
+const auth = require("../middleware/auth");
 
 const app = express();
 
@@ -36,7 +37,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use("/robots", robotsRoutes);
+app.use("/robots", auth, robotsRoutes);
 
 app.use("/users", userRoutes);
 
