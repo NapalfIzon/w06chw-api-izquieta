@@ -12,7 +12,7 @@ const createUser = async (req, res, next) => {
     debug(chalk.bgGreen.white(`Se ha creado al usuario correctamente ₍ᐢ.⚇.ᐢ₎`));
   } catch (error) {
     error.code = 400;
-    error.message = "Unable to create the user.";
+    error.message = "No hemos podido crear el usuario solicitado ʅ(°,ʖ°)ʃ";
     next(error);
   }
 };
