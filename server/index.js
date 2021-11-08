@@ -6,7 +6,7 @@ const cors = require("cors");
 const initializeMongoDBServer = require("../database/index");
 const errorHandler = require("./error");
 const robotsRoutes = require("./routes/robotsRoutes");
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/usersRoutes");
 
 const app = express();
 
