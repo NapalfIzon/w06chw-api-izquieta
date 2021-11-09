@@ -7,7 +7,6 @@ const User = require("../../database/models/User");
 const login = async (req, res, next) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
-  console.log(user.id);
 
   if (user.username === username) {
     const isPasswordOk = await bcrypt.compare(password, user.password);

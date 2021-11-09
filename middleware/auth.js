@@ -10,7 +10,6 @@ const auth = (req, res, next) => {
 
     if (token) {
       try {
-        console.log("caca de la vaca");
         const user = jwt.verify(token, process.env.JWT_SECRET);
         req.userId = user.id;
         next();
