@@ -3,11 +3,19 @@ const morgan = require("morgan");
 const chalk = require("chalk");
 const debug = require("debug")("robots:indexServer");
 const cors = require("cors");
+const { validate, Joi } = require("express-validation");
 const initializeMongoDBServer = require("../database/index");
 const errorHandler = require("./error");
 const robotsRoutes = require("./routes/robotsRoutes");
 const userRoutes = require("./routes/usersRoutes");
 const auth = require("../middleware/auth");
+
+const loginValidation = {
+  body: Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+  }),
+};
 
 const app = express();
 
@@ -39,7 +47,7 @@ app.use(express.json());
 
 app.use("/robots", auth, robotsRoutes);
 
-app.use("/users", userRoutes);
+app.use("/users", validate(loginValidation), userRoutes);
 
 app.use(errorHandler);
 
