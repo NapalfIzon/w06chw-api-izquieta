@@ -10,6 +10,8 @@ const robotsRoutes = require("./routes/robotsRoutes");
 const userRoutes = require("./routes/usersRoutes");
 const auth = require("../middleware/auth");
 
+const urlMongoDb = process.env.MONGODB_STRING_ROBOTS;
+
 const loginValidation = {
   body: Joi.object({
     username: Joi.string().required(),
@@ -26,7 +28,7 @@ const initializeServer = (port) => {
         `${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"} Escuchando en el puerto ${port} ${"ᕦ( ͡° ͜ʖ ͡°)ᕤ"}`
       )
     );
-    initializeMongoDBServer();
+    initializeMongoDBServer(urlMongoDb);
   });
 
   server.on("error", (error) => {
