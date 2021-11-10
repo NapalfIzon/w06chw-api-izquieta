@@ -2,8 +2,8 @@ const chalk = require("chalk");
 const debug = require("debug")("robots:indexDatabase");
 const mongoose = require("mongoose");
 
-const initializeMongoDBServer = () => {
-  mongoose.connect(process.env.MONGODB_STRING_ROBOTS, (error) => {
+const initializeMongoDBServer = (urlMongoDb) => {
+  mongoose.connect(urlMongoDb, (error) => {
     if (error) {
       debug(
         chalk.bgRedBright.white(
